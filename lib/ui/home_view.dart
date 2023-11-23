@@ -20,7 +20,27 @@ class HomeView extends StatelessWidget {
             Get.to(const CounterView());
           }, child: const Text("Navigate to CounterScreen")),
           
-         
+       ElevatedButton(
+  onPressed: () {
+    Get.defaultDialog(
+      title: "Dialog",
+      middleText: "Getx is better than bloc",
+      textConfirm: "yes",
+      textCancel: "no",
+      onConfirm: () {
+        Get.snackbar("Getx", "Your Choice is Getx");
+        Get.back();
+      },
+      onCancel: () {
+        // Get.snackbar("Bloc", "Your Choice is bloc");
+        Get.back();
+      }
+    );
+  },
+  child: const Text("SnackBar"),
+)
+
+          
         ],
       ),
     ),
