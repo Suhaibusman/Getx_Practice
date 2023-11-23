@@ -32,6 +32,7 @@ class HomeView extends StatelessWidget {
         Get.back();
       },
       onCancel: () {
+        //2 function use nhi horhe isme 
         // Get.snackbar("Bloc", "Your Choice is bloc");
         Get.back();
       }
