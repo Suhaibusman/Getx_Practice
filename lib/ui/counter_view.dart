@@ -19,11 +19,12 @@ class CounterView extends StatelessWidget {
           children: [
           Obx(()=>Text(counterController.count.value.toString())),
           ElevatedButton(onPressed: (){
-            Get.to(const HomeView());
+            Get.toNamed("/homeView");
+            // Get.to(const HomeView());
           }, child: const Text("Navigate to Home")),
            ElevatedButton(onPressed: (){
             Get.bottomSheet(Container(
-               color: Colors.transparent,
+               color: Colors.blue,
               child: Column(
                 children: [
                   ListTile(
