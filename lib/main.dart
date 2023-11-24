@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_practice/localization/languages.dart';
 import 'package:getx_practice/ui/counter_view.dart';
 import 'package:getx_practice/ui/home_view.dart';
 
@@ -16,6 +17,9 @@ class MyApp extends StatelessWidget {
     return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: const CounterView(),
+      locale: const Locale("en","US"),
+      translations: Languages(),
+      fallbackLocale: const Locale("en","US"),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

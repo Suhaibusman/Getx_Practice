@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import 'package:getx_practice/controller/counter_controller.dart';
 import 'package:getx_practice/ui/counter_view.dart';
 
+// ignore: must_be_immutable
 class HomeView extends StatelessWidget {
+ // ignore: prefer_typing_uninitialized_variables
  var name;
   HomeView({
     Key? key,
@@ -21,6 +23,20 @@ class HomeView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+
+          Text("message".tr),
+           Text("name".tr),
+           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+             children: [
+               OutlinedButton(onPressed: (){
+                Get.updateLocale(const Locale("en","US"));
+               }, child: const Text("English")),
+                OutlinedButton(onPressed: (){
+                Get.updateLocale(const Locale("ur","PK"));
+               }, child: const Text("Urdu")),
+             ],
+           ),
         Obx(() =>   Text("Counter Value ${counterController.count}"),),
             ElevatedButton(onPressed: (){
             Get.to(const CounterView());
