@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:getx_practice/controller/counter_controller.dart';
 import 'package:getx_practice/ui/counter_view.dart';
 
+import '../controller/home_controller.dart';
+
 // ignore: must_be_immutable
 class HomeView extends StatelessWidget {
  // ignore: prefer_typing_uninitialized_variables
@@ -17,16 +19,29 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CounterController counterController = Get.find<CounterController>();
+        HomeController homeController = Get.put(HomeController());
     return Scaffold(
       appBar: AppBar(title:  Text("Home View ${Get.parameters["name"]}"),),
     body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-
+              Obx(() => Container(
+  color: Colors.red.withOpacity(homeController.opacity.value),
+  height: Get.height *0.3,
+  width: Get.width,
+)),
+Obx(() => Slider(value: homeController.opacity.value, onChanged: (value){
+homeController.setOpacity(value);
+})
+),
+Obx(() => Switch(value: homeController.isSwitched.value, onChanged: (value){
+  homeController.setIsSwitched(value);
+}),),
           Text("message".tr),
            Text("name".tr),
            Row(
+
             mainAxisAlignment: MainAxisAlignment.center,
              children: [
                OutlinedButton(onPressed: (){
@@ -61,7 +76,7 @@ class HomeView extends StatelessWidget {
     );
   },
   child: const Text("SnackBar"),
-)
+),
 
           
         ],

@@ -22,8 +22,12 @@ class CounterView extends StatelessWidget {
             Get.toNamed("/homeView" ,  parameters: {"name": "Suhaib"});
             // Get.to(const HomeView());
           }, child: const Text("Navigate to Home")),
+          const SizedBox(height: 20,),
+          ElevatedButton(onPressed: (){
+             Get.changeTheme(ThemeData.dark());
+          }, child: Text("theme")),
            ElevatedButton(onPressed: (){
-            Get.bottomSheet(Container(
+            Get.bottomSheet(Container(   
                color: Colors.blue,
               child: Column(
                 children: [
