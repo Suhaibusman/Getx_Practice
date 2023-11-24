@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:getx_practice/controller/counter_controller.dart';
-import 'package:getx_practice/ui/home_view.dart';
+
 
 class CounterView extends StatelessWidget {
   const CounterView({super.key});
@@ -19,7 +19,7 @@ class CounterView extends StatelessWidget {
           children: [
           Obx(()=>Text(counterController.count.value.toString())),
           ElevatedButton(onPressed: (){
-            Get.toNamed("/homeView");
+            Get.toNamed("/homeView" ,  parameters: {"name": "Suhaib"});
             // Get.to(const HomeView());
           }, child: const Text("Navigate to Home")),
            ElevatedButton(onPressed: (){
