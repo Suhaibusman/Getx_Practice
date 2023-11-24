@@ -19,4 +19,7 @@ Rx<bool> isSwitched = false.obs;
      Get.changeTheme(ThemeData.light());
   }
   }
+
+ List<String> fruitList = ["apple", "banana", "orange", "grape", "strawberry", "mango", "pineapple", "watermelon", "kiwi", "pear"];
+List favFruitList =[];
 }

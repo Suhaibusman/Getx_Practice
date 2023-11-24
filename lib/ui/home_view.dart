@@ -27,21 +27,21 @@ class HomeView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
               Obx(() => Container(
-  color: Colors.red.withOpacity(homeController.opacity.value),
-  height: Get.height *0.3,
-  width: Get.width,
-)),
-Obx(() => Slider(value: homeController.opacity.value, onChanged: (value){
-homeController.setOpacity(value);
-})
-),
-Obx(() => Switch(value: homeController.isSwitched.value, onChanged: (value){
-  homeController.setIsSwitched(value);
-}),),
+      color: Colors.red.withOpacity(homeController.opacity.value),
+      height: Get.height *0.1,
+      width: Get.width,
+          )),
+          Obx(() => Slider(value: homeController.opacity.value, onChanged: (value){
+          homeController.setOpacity(value);
+          })
+          ),
+          Obx(() => Switch(value: homeController.isSwitched.value, onChanged: (value){
+      homeController.setIsSwitched(value);
+          }),),
           Text("message".tr),
            Text("name".tr),
            Row(
-
+          
             mainAxisAlignment: MainAxisAlignment.center,
              children: [
                OutlinedButton(onPressed: (){
@@ -58,8 +58,8 @@ Obx(() => Switch(value: homeController.isSwitched.value, onChanged: (value){
           }, child: const Text("Navigate to CounterScreen")),
           
        ElevatedButton(
-  onPressed: () {
-    Get.defaultDialog(
+      onPressed: () {
+          Get.defaultDialog(
       title: "Dialog",
       middleText: "Getx is better than bloc",
       textConfirm: "yes",
@@ -73,11 +73,41 @@ Obx(() => Switch(value: homeController.isSwitched.value, onChanged: (value){
         // Get.snackbar("Bloc", "Your Choice is bloc");
         Get.back();
       }
-    );
+          );
+      },
+      child: const Text("SnackBar"),
+          ),
+          Expanded(child: ListView.builder(
+            shrinkWrap: false,
+          // physics: const NeverScrollableScrollPhysics(),
+      itemCount: homeController.fruitList.length,
+      itemBuilder: (context , index){
+          return ListTile(
+      title: Text(homeController.fruitList[index]),
+      trailing: IconButton(
+  onPressed: () {
+    // Print the current list of favorite fruits
+    print(homeController.favFruitList);
+
+    // Toggle the favorite status of the current fruit
+    if (homeController.favFruitList.contains(homeController.fruitList[index])) {
+      // If the fruit is in the list, remove it
+      homeController.favFruitList.remove(homeController.fruitList[index]);
+    } else {
+      // If the fruit is not in the list, add it
+      homeController.favFruitList.add(homeController.fruitList[index]);
+    }
   },
-  child: const Text("SnackBar"),
+  icon: Icon(
+    Icons.favorite,
+    color: homeController.favFruitList.contains(homeController.fruitList[index])
+        ? Colors.red
+        : Colors.grey,
+  ),
 ),
 
+          );
+          }))
           
         ],
       ),
@@ -85,6 +115,7 @@ Obx(() => Switch(value: homeController.isSwitched.value, onChanged: (value){
          floatingActionButton: FloatingActionButton(onPressed: (){
         counterController.incrementCount(); 
       }, child: const Icon(Icons.add),),
+      
     );
   }
 }
