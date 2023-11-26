@@ -92,10 +92,10 @@ class HomeView extends StatelessWidget {
     // Toggle the favorite status of the current fruit
     if (homeController.favFruitList.contains(homeController.fruitList[index])) {
       // If the fruit is in the list, remove it
-      homeController.favFruitList.remove(homeController.fruitList[index]);
+      homeController.removefromFavourite(homeController.fruitList[index]);
     } else {
       // If the fruit is not in the list, add it
-      homeController.favFruitList.add(homeController.fruitList[index]);
+      homeController.addtoFavourite(homeController.fruitList[index]);
     }
   },
   icon: Obx(() => Icon(
