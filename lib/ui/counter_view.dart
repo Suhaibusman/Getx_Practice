@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:getx_practice/controller/counter_controller.dart';
+
+import '../controller/image_picker_controller.dart';
 
 
 class CounterView extends StatelessWidget {
@@ -10,7 +14,7 @@ class CounterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       CounterController counterController = Get.put(CounterController());
-    
+    ImagePickerController imagepicker = Get.put(ImagePickerController());
     // CounterController counterController = CounterController();
     return  Scaffold(
       appBar: AppBar(title: const Text("Counter View"),),
@@ -25,7 +29,7 @@ class CounterView extends StatelessWidget {
           const SizedBox(height: 20,),
           ElevatedButton(onPressed: (){
              Get.changeTheme(ThemeData.dark());
-          }, child: Text("theme")),
+          }, child: const Text("theme")),
            ElevatedButton(onPressed: (){
             Get.bottomSheet(Container(   
                color: Colors.blue,
@@ -48,7 +52,22 @@ class CounterView extends StatelessWidget {
                 ],
               ),
             ));
-          }, child: const Text("Theme Mode"))
+          }, child: const Text("Theme Mode")),
+          Obx((){
+            return Column(
+              children: [
+                CircleAvatar(
+                  radius: 40,
+                    backgroundImage: imagepicker.imagePath.isNotEmpty ? FileImage(File(imagepicker.imagePath.toString())) : null,
+                ),
+                InkWell(
+                  onTap: (){
+                    imagepicker.getImage();
+                  },
+                  child: const Text("Pick Image"))
+              ],
+            );
+          })
           ],
         ),
       ),
