@@ -20,6 +20,6 @@ Rx<bool> isSwitched = false.obs;
   }
   }
 
- List<String> fruitList = ["apple", "banana", "orange", "grape", "strawberry", "mango", "pineapple", "watermelon", "kiwi", "pear"];
-List favFruitList =[];
+ RxList<String> fruitList = ["apple", "banana", "orange", "grape", "strawberry", "mango", "pineapple", "watermelon", "kiwi", "pear"].obs;
+RxList favFruitList =[].obs;
 }

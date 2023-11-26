@@ -98,12 +98,12 @@ class HomeView extends StatelessWidget {
       homeController.favFruitList.add(homeController.fruitList[index]);
     }
   },
-  icon: Icon(
+  icon: Obx(() => Icon(
     Icons.favorite,
     color: homeController.favFruitList.contains(homeController.fruitList[index])
         ? Colors.red
         : Colors.grey,
-  ),
+  ),)
 ),
 
           );
