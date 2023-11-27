@@ -15,23 +15,25 @@ class LoginView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              
               decoration: const InputDecoration(
                 labelText: 'Email',
               ),
-            
               controller: login.emailController.value,
             ),
-             TextFormField(
-              decoration: const InputDecoration(
-                hintText: "Password"
-              ),
+            TextFormField(
+              decoration: const InputDecoration(hintText: "Password"),
               controller: login.passwordController.value,
             ),
-           login.loading.value?  Obx(() => CircularProgressIndicator()): ElevatedButton(
-              onPressed: () {
-                login.loginAPi();
-              }, child: const Text("Login"),)
+            Obx(() {
+              return login.loading.value
+                ? const CircularProgressIndicator()
+                : ElevatedButton(
+                onPressed: () {
+                  login.loginAPi();
+                },
+                child: const Text("Login"),
+              );
+            })
           ],
         ),
       ),
