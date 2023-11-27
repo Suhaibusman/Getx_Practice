@@ -9,23 +9,31 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     LoginController login = Get.put(LoginController());
     return Scaffold(
-      body: Column(
-        children: [
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: "Email"
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextFormField(
+              
+              decoration: const InputDecoration(
+                labelText: 'Email',
+              ),
+            
+              controller: login.emailController.value,
             ),
-            controller: login.emailController.value,
-          ),
-           TextFormField(
-            decoration: const InputDecoration(
-              hintText: "Password"
+             TextFormField(
+              decoration: const InputDecoration(
+                hintText: "Password"
+              ),
+              controller: login.passwordController.value,
             ),
-            controller: login.passwordController.value,
-          ),
-          ElevatedButton(
-            onPressed: () {}, child: const Text("Login"),)
-        ],
+           login.loading.value?  Obx(() => CircularProgressIndicator()): ElevatedButton(
+              onPressed: () {
+                login.loginAPi();
+              }, child: const Text("Login"),)
+          ],
+        ),
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:getx_practice/controller/counter_controller.dart';
-import 'package:getx_practice/ui/counter_view.dart';
+import 'package:getx_practice/ui/login_view.dart';
 
 import '../controller/home_controller.dart';
 
@@ -68,9 +68,9 @@ class HomeView extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Get.to(const CounterView());
+                  Get.to(const LoginView());
                 },
-                child: const Text("Navigate to CounterScreen")),
+                child: const Text("Navigate to Login Screen")),
             ElevatedButton(
               onPressed: () {
                 Get.defaultDialog(
